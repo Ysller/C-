@@ -1,0 +1,54 @@
+#include <iostream>
+
+int main() {
+    char operacao;
+    double num1, num2, resultado;
+
+    // Solicitar ao usuário a operação desejada
+    std::cout << "Digite a operacao (+, -, *, /, %): ";
+    std::cin >> operacao;
+
+    // Solicitar os dois números
+    std::cout << "Digite o primeiro numero: ";
+    std::cin >> num1;
+
+    std::cout << "Digite o segundo numero: ";
+    std::cin >> num2;
+
+    // Realizar a operação selecionada
+    switch (operacao) {
+        case '+':
+            resultado = num1 + num2;
+            break;
+        case '-':
+            resultado = num1 - num2;
+            break;
+        case '*':
+            resultado = num1 * num2;
+            break;
+        case '/':
+            if (num2 != 0) {
+                resultado = num1 / num2;
+            } else {
+                std::cerr << "Erro! Divisao por zero nao permitida.\n";
+                return 1;  // Encerrar o programa com código de erro
+            }
+            break;
+        case '%':
+            if (num2 != 0) {
+                resultado = static_cast<int>(num1) % static_cast<int>(num2);
+            } else {
+                std::cerr << "Erro! Divisao por zero nao permitida.\n";
+                return 1;  // Encerrar o programa com código de erro
+            }
+            break;
+        default:
+            std::cerr << "Operacao invalida.\n";
+            return 1;  // Encerrar o programa com código de erro
+    }
+
+    // Exibir o resultado
+    std::cout << "Resultado: " << resultado << std::endl;
+
+    return 0;  // Encerrar o programa com sucesso
+}
